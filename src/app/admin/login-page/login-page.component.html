@@ -46,6 +46,6 @@
   <button
     type="submit"
     class="btn btn-primary"
-    [disabled]="form.invalid"
+    [disabled]="form.invalid || submitted"
   >Sign In</button>
 </form>
