@@ -1,20 +1,23 @@
-<div class="post">
-  <div class="post__header">
-    <h1>Post Title</h1>
+<div *ngIf="post$ | async as post; else loading">
+  <div class="post">
+    <div class="post__header">
+      <h1>{{post.title}}</h1>
 
-    <button routerLink="/" class="btn btn-link">To main</button>
-  </div>
+      <button routerLink="/" class="btn btn-link">To main</button>
+    </div>
 
-  <div class="post__info">
-    <strong>Author</strong>
-    <small>12.12.12</small>
-  </div>
+    <div class="post__info">
+      <strong>{{post.author}}</strong>
+      <small>{{post.date | date: 'medium':null:'us'}}</small>
+    </div>
 
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet, blanditiis culpa deserunt doloremque ducimus earum error exercitationem, facilis harum id in iste itaque libero magni necessitatibus nisi nobis placeat quae quasi qui rerum sequi tempora vel veritatis vero? Aut beatae consectetur corporis dignissimos ex impedit ipsa iure, minus?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet, blanditiis culpa deserunt doloremque ducimus earum error exercitationem, facilis harum id in iste itaque libero magni necessitatibus nisi nobis placeat quae quasi qui rerum sequi tempora vel veritatis vero? Aut beatae consectetur corporis dignissimos ex impedit ipsa iure, minus?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet, blanditiis culpa deserunt doloremque ducimus earum error exercitationem, facilis harum id in iste itaque libero magni necessitatibus nisi nobis placeat quae quasi qui rerum sequi tempora vel veritatis vero? Aut beatae consectetur corporis dignissimos ex impedit ipsa iure, minus?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet, blanditiis culpa deserunt doloremque ducimus earum error exercitationem, facilis harum id in iste itaque libero magni necessitatibus nisi nobis placeat quae quasi qui rerum sequi tempora vel veritatis vero? Aut beatae consectetur corporis dignissimos ex impedit ipsa iure, minus?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet, blanditiis culpa deserunt doloremque ducimus earum error exercitationem, facilis harum id in iste itaque libero magni necessitatibus nisi nobis placeat quae quasi qui rerum sequi tempora vel veritatis vero? Aut beatae consectetur corporis dignissimos ex impedit ipsa iure, minus?</p>
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
   </div>
 </div>
+
+
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

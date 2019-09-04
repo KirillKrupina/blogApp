@@ -45,7 +45,7 @@ export class AuthService {
 
   switch (message) {
       case 'EMAIL_NOT_FOUND':
-        this.error$.next('Email no found');
+        this.error$.next('Email not found');
         break;
       case 'INVALID_EMAIL':
         this.error$.next('Invalid email');
