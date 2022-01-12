@@ -18,7 +18,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   post: Post;
   submitted = false;
-
   updateSub: Subscription;
 
   constructor(
@@ -26,7 +25,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
     private postsService: PostsService,
     private alert: AlertService
   ) { }
-
   ngOnInit() {
     this.route.params
       .pipe(
@@ -41,18 +39,14 @@ export class EditPageComponent implements OnInit, OnDestroy {
         });
     });
     }
-
   ngOnDestroy() {
     if (this.updateSub) { this.updateSub.unsubscribe(); }
   }
-
   submit() {
     if (this.form.invalid) {
       return;
     }
-
     this.submitted = true;
-
     this.updateSub = this.postsService.update({
       ...this.post,
       text: this.form.value.text,
@@ -62,8 +56,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
       this.alert.success('Post has been updated');
     });
   }
-
-
 }
 
 
